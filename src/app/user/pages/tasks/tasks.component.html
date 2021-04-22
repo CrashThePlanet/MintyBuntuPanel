@@ -1,0 +1,11 @@
+<div class="mx-auto col-9 col-lg-6 col-xxl-4 d-flex justify-content-between mb-3">
+    <span class="low">nicht so wichtig</span>
+    <span class="medium">mittelmäßig wichtig</span>
+    <span class="high">sehr wichtig</span>
+</div>
+<div class="row m-0">
+    <app-task *ngFor="let task of tasks" [shortDesc]="task.shortDesc" [description]="task.description"
+        [priority]="task.priority" [status]="task.status" [creationDate]="task.creationDate"
+        [deliveryDate]="task.deliveryDate" [client]="task.client" [id]="task.id" [groupName]="task.group"
+        (refresh)="getTasks()" class="col-11 col-lg-5 col-xxl-4"></app-task>
+</div>

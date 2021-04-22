@@ -1,0 +1,74 @@
+<mat-accordion *ngIf="!noRequests; else elseBlock" class="font-grey BRnull">
+    <mat-expansion-panel *ngFor="let request of requests" class="mb-2">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{request.old.username}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{request.new.dateOfRequest}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-divider></mat-divider>
+        <div class="row p-2">
+            <div class="col-12 col-lg-6 dataShow mb-2">
+                <p class="m-0 fz-0_9"><b>Nachname, Vorname</b></p>
+                <p class="">{{request.old.surname}}, {{request.old.forname}}</p>
+                <p class="m-0 fz-0_9"><b>Nickname / Spitzname</b></p>
+                <p class="">{{request.old.nickname}}</p>
+                <p class="m-0 fz-0_9"><b>Geburtstag</b></p>
+                <p class="">{{request.old.birthdate}}</p>
+                <p class="m-0 fz-0_9"><b>Anschrift</b></p>
+                <p class="">{{request.old.houseNumber}} {{request.old.place}} {{request.old.postCode}}</p>
+                <p class="m-0 fz-0_9"><b>Telefonnummer</b></p>
+                <p class="">{{request.old.phone}}</p>
+                <p class="m-0 fz-0_9"><b>E-Mail-Adresse</b></p>
+                <p class="">{{request.old.secondEmail}}</p>
+                <p class="m-0 fz-0_9"><b>E-Mail Weiterleitung</b></p>
+                <p *ngIf="request.old.redirect">aktiviert</p>
+                <p *ngIf="!request.old.redirect">deaktiviert</p>
+                <p class="m-0 fz-0_9"><b>Bemerkungen</b></p>
+                <p class="" [innerHTML]="request.old.notes"></p>
+            </div>
+            <div class="col-12 col-lg-6 dataShow">
+                <p class="m-0 fz-0_9"><b>Nachname, Vorname</b></p>
+                <p class="">{{request.new.surname}}, {{request.new.forname}}</p>
+                <p class="m-0 fz-0_9"><b>Nickname / Spitzname</b></p>
+                <p class="">{{request.new.nickname}}</p>
+                <p class="m-0 fz-0_9"><b>Geburtstag</b></p>
+                <p class="">{{request.new.birthdate}}</p>
+                <p class="m-0 fz-0_9"><b>Anschrift</b></p>
+                <p class="">{{request.new.houseNumber}} {{request.new.place}} {{request.new.postCode}}</p>
+                <p class="m-0 fz-0_9"><b>Telefonnummer</b></p>
+                <p class="">{{request.new.phone}}</p>
+                <p class="m-0 fz-0_9"><b>E-Mail-Adresse</b></p>
+                <p class="">{{request.new.secondEmail}}</p>
+                <p class="m-0 fz-0_9"><b>E-Mail Weiterleitung</b></p>
+                <p *ngIf="request.new.redirect">aktiviert</p>
+                <p *ngIf="!request.new.redirect">deaktiviert</p>
+                <p class="m-0 fz-0_9"><b>Bemerkungen</b></p>
+                <p class="" [innerHTML]="request.new.notes"></p>
+            </div>
+        </div>
+        <div>
+            <button mat-raised-button color="warn" (click)="decline = !decline" class="BRnull">
+                <fa-icon [icon]="faTimes"></fa-icon> Ablehnen
+            </button>
+            <button mat-raised-button color="accent" class="m-2 BRnull" (click)="acceptRequest(request)">
+                <fa-icon [icon]="faCheck"></fa-icon> Annehmen
+            </button>
+            <br><br>
+            <form [formGroup]="declineForm" *ngIf="decline">
+                <div class="w-100" appearance="outline">
+                    <mat-label>Begründung</mat-label>
+                    <quill-editor formControlName="editor"></quill-editor>
+                    <mat-error>Bitte gib einen Grund für die Ablehnung ein</mat-error>
+                </div>
+                <button mat-raised-button color="primary" (click)="declineRequest(request.new.idR)" class="declineFinal"
+                    class="BRnull">Senden</button>
+            </form>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+<ng-template #elseBlock>
+    <p>Keine Änderungsanträge vorhanden / gefunden</p>
+</ng-template>

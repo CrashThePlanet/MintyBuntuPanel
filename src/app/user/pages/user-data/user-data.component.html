@@ -1,0 +1,107 @@
+<div class="main-grey w-90 mx-auto p-2 font-grey">
+    <p class="h1 text-center">Nutzerdaten</p>
+    <div class="">
+        <form [formGroup]="userDataForm">
+            <div class="row">
+                <div class="col-12 col-xl-6">
+                    <p class="w-80 mx-auto h2">Person</p>
+                </div><br>
+                <div class="col-12 col-xl-6">
+                    <mat-form-field class="ml-3 mx-auto w-80 fz-1_3">
+                        <mat-label>Vorname</mat-label>
+                        <input type="text" matInput formControlName="forname">
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <mat-form-field class="mx-auto w-80 fz-1_3">
+                        <mat-label>Nachname</mat-label>
+                        <input type="text" matInput formControlName="surname">
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <mat-form-field class="mx-auto w-80 fz-1_3">
+                        <mat-label>Spitzname / Nickname</mat-label>
+                        <input type="text" matInput formControlName="nickname">
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <mat-form-field class="mx-auto w-80 fz-1_3">
+                        <mat-label>Geburtstag</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-12 col-xl-6">
+                <p class="w-80 mx-auto h2">Anschrift</p>
+            </div><br>
+            <div class="row">
+                <div class="col-12 col-xl-6">
+                    <mat-form-field class="mx-auto w-80 fz-1_3">
+                        <mat-label>Postleitzahl</mat-label>
+                        <input type="text" matInput formControlName="postCode">
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <mat-form-field class="mx-auto w-80 fz-1_3">
+                        <mat-label>Ort</mat-label>
+                        <input type="text" matInput formControlName="place">
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <mat-form-field class="mx-auto w-80 fz-1_3">
+                        <mat-label>Hausnummer</mat-label>
+                        <input type="text" matInput formControlName="houseNumber">
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-12 col-xl-6">
+                <p class="w-80 mx-auto h2">Kontakt</p>
+            </div><br>
+            <div class="row">
+                <div class="col-12 col-xl-6">
+                    <mat-form-field class="mx-auto w-80 fz-1_3">
+                        <mat-label>Telefonnummer</mat-label>
+                        <input type="text" matInput formControlName="phone">
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <mat-form-field class="mx-auto w-80 fz-1_3">
+                        <mat-label>Email</mat-label>
+                        <input type="text" matInput formControlName="email">
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                    <mat-checkbox class="mx-auto" [(ngModel)]="redirect" [ngModelOptions]="{standalone: true}"
+                        matTooltip="Achtung, die EImails werden dennoch an die MintyBuntu Email-Adresse gesendet!">
+                        Emails an meine Private <br> Email-Adresse weiterleiten.
+                    </mat-checkbox>
+                </div>
+            </div>
+            <div class="col-12 col-xl-6">
+                <p class="w-80 mx-auto h2">Anmerkungen</p>
+            </div><br>
+            <div class="w-90 mx-auto fz-1_3">
+                <quill-editor [styles]="editorStyles" formControlName="editor"></quill-editor>
+            </div>
+        </form>
+        <br>
+        <div class="w-90 mx-auto">
+            <button mat-raised-button class="BRnull w-100 w-xl-20" (click)="getData()">Änderungen verwerfen</button>
+            <button mat-raised-button color="accent" class="BRnull w-100 w-xl-20 mx-xl-3 my-2 my-xl-0"
+                (click)="sendRequest()">
+                Änderungen speichern
+            </button>
+            <p class="m-0"><u>Achtung</u></p>
+            <p>Aus Sicherheitsgründen werden Änderungen nicht sofort übernommen. Ein Admin muss den Änderungen erst
+                zustimmen.</p>
+        </div>
+    </div>
+</div>

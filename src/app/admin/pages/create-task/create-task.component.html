@@ -1,0 +1,52 @@
+<div class="main-grey w-90 mx-auto p-2 font-grey">
+    <p class="h1 text-center">Aufgabe erstellen</p>
+    <form [formGroup]="createTaskForm" action="createTask()" class="row col-12">
+        <div class="col-12 col-xl-6">
+            <mat-form-field class="w-100 fz-1_3">
+                <mat-label>Überschrift</mat-label>
+                <input type="text" matInput formControlName="shortDesc">
+                <mat-error></mat-error>
+            </mat-form-field>
+            <div class="w-100 fz-1_3">
+                <mat-label>Beschreibung</mat-label>
+                <quill-editor [styles]="editorStyles" formControlName="editor"></quill-editor>
+                <mat-error></mat-error>
+            </div>
+        </div>
+        <div class="col-12 col-xl-6">
+            <mat-form-field class="w-100 fz-1_3">
+                <mat-label>Wie wichtig?</mat-label>
+                <mat-select matInput formControlName="priority">
+                    <mat-option value="low">unwichtig</mat-option>
+                    <mat-option value="medium">mittelmäßig</mat-option>
+                    <mat-option value="high">sehr wichtig</mat-option>
+                </mat-select>
+                <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 fz-1_3">
+                <mat-label>Bearbeiter</mat-label>
+                <mat-select matInput formControlName="editor2">
+                    <mat-option>----Nutzer----</mat-option>
+                    <mat-option *ngFor="let editor of editors" [value]="editor.id+ '~' + editor.username">
+                        {{editor.username}}
+                    </mat-option>
+                    <mat-option>----Gruppen----</mat-option>
+                    <mat-option *ngFor="let group of groups" [value]="group.id+ '~' + group.name">{{group.name}} |
+                        {{group.workspace}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-100 fz-1_3">
+                <mat-label>Abgabetermin</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="deliveryDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-hint>Wenn du kein Datum auswählt, hat der Nutzer unbegrenzt Zeit</mat-hint>
+            </mat-form-field>
+            <br><br>
+            <button mat-raised-button color="accent" (click)="createTask()" class="w-100 BRnull">
+                <fa-icon [icon]="faSave"></fa-icon> Speichern
+            </button>
+        </div>
+    </form>
+</div>

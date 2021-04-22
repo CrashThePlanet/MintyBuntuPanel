@@ -1,0 +1,73 @@
+<div class="main-grey mx-auto maindiv col-11 col-lg-4 p-2">
+    <div class="text-center">
+        <p class="h1 font-grey fz-3">Registrieren</p>
+    </div>
+    <form [formGroup]="registrationForm">
+        <mat-vertical-stepper #regisStepper linear class="bg-transparent">
+            <mat-step [stepControl]="registrationForm" completed="false">
+                <ng-template matStepLabel>Name</ng-template>
+                <mat-form-field class="w-100 fz-1_3" hideRequiredMarker>
+                    <mat-label>Vorname</mat-label>
+                    <input type="text" matInput required formControlName="forname">
+                    <mat-error *ngIf="checkValid('forname')">{{fornameError}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100 fz-1_3" hideRequiredMarker>
+                    <mat-label>Nachname</mat-label>
+                    <input type="text" matInput required formControlName="surname">
+                    <mat-error *ngIf="checkValid('surname')">{{surnameError}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-raised-button matStepperNext class="BRnull" (click)="checkStepValid(regisStepper, 'forname', 'surname')">Weiter</button>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="registrationForm" completed="false">
+                <ng-template matStepLabel>Nickname</ng-template>
+                <mat-form-field class="w-100 fz-1_3" hideRequiredMarker>
+                    <mat-label>Spitzname / Nickname</mat-label>
+                    <input type="text" matInput required formControlName="nickname">
+                    <mat-error *ngIf="checkValid('nickname')">{{nicknameError}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <button class="mr-1 BRnull" mat-raised-button matStepperPrevious>Zurück</button>
+                    <button class="mx-1 BRnull" mat-raised-button matStepperNext (click)="checkStepValid(regisStepper, 'nickname')">Weiter</button>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="registrationForm" completed="false">
+                <ng-template matStepLabel>Email</ng-template>
+                <mat-form-field class="w-100 fz-1_3" hideRequiredMarker>
+                    <mat-label>@mintybuntu Email</mat-label>
+                    <input type="email" matInput required formControlName="email">
+                    <mat-error *ngIf="checkValid('email')">{{emailError}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <button class="mr-1 BRnull" mat-raised-button matStepperPrevious>Zurück</button>
+                    <button class="mx-1 BRnull" mat-raised-button matStepperNext (click)="checkStepValid(regisStepper, 'email')">Weiter</button>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="registrationForm" completed="false">
+                <ng-template matStepLabel>Passwort</ng-template>
+                <mat-form-field class="w-100 fz-1_3" hideRequiredMarker>
+                    <mat-label>Passwort</mat-label>
+                    <input type="password" matInput required formControlName="pw" [matTooltip]="pwRequirements">
+                    <mat-error *ngIf="checkValid('pw')">{{pwError}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100 fz-1_3" hideRequiredMarker>
+                    <mat-label>Passwort wiederholen</mat-label>
+                    <input type="password" matInput required formControlName="pwRepeat">
+                    <mat-error *ngIf="checkValid('pwRepeat') || pwrError">{{pwRepeatError}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-raised-button matStepperPrevious class="BRnull">Zurück</button>
+                </div>
+                <br> <br>
+                <button mat-raised-button color="accent" class="w-50 m-1 mx-auto BRnull block" (click)="registrate()"><fa-icon [icon]="faUserPlus"></fa-icon> Registrieren</button>
+                <p class="text-danger p-center">{{error}}</p>
+            </mat-step>
+        </mat-vertical-stepper>
+    </form>
+    <p>Du hast bereichts einen Account? Dann melde dich <a routerLink="/login">hier</a> an.</p>
+</div>
+<div class="legal row">
+    <a routerLink="/legal/licenses" class="font-grey fz-09">Lizensen</a><br>
+    <a routerLink="/legal/notice" class="font-grey fz-09">Impressum</a>
+</div>

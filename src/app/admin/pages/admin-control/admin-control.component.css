@@ -1,0 +1,13 @@
+.subNav a {
+    width: 33.3333333333333333333%;
+}
+@media only screen and (max-width: 992px) {
+    .subNav a {
+        width: 100%;
+    }
+}
+.display {
+    height: 90% !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

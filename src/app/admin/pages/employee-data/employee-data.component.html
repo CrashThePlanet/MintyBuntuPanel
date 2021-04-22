@@ -1,0 +1,64 @@
+<div class="filter" class="font-grey">
+    <button mat-button [matMenuTriggerFor]="letters">Filter <fa-icon [icon]="faEllipsisV" size="lg"></fa-icon>
+    </button>
+    <mat-menu #letters="matMenu" class="font-grey">
+        <button mat-menu-item [matMenuTriggerFor]="AtoD" class="font-grey">A - D</button>
+        <button mat-menu-item [matMenuTriggerFor]="EtoH" class="font-grey">E - H</button>
+        <button mat-menu-item [matMenuTriggerFor]="ItoL" class="font-grey">I - L</button>
+        <button mat-menu-item [matMenuTriggerFor]="MtoP" class="font-grey">M - P</button>
+        <button mat-menu-item [matMenuTriggerFor]="QtoT" class="font-grey">Q - T</button>
+        <button mat-menu-item [matMenuTriggerFor]="UtoX" class="font-grey">U - X</button>
+        <button mat-menu-item [matMenuTriggerFor]="YtoZ" class="font-grey">Y - Z</button>
+        <button mat-menu-item (click)="getUsers()" class="font-grey">Reset</button>
+    </mat-menu>
+
+    <mat-menu #AtoD="matMenu">
+        <button mat-menu-item (click)="sort('a')" class="font-grey">A</button>
+        <button mat-menu-item (click)="sort('b')" class="font-grey">B</button>
+        <button mat-menu-item (click)="sort('c')" class="font-grey">C</button>
+        <button mat-menu-item (click)="sort('d')" class="font-grey">D</button>
+    </mat-menu>
+    <mat-menu #EtoH="matMenu">
+        <button mat-menu-item (click)="sort('e')" class="font-grey">E</button>
+        <button mat-menu-item (click)="sort('f')" class="font-grey">F</button>
+        <button mat-menu-item (click)="sort('g')" class="font-grey">G</button>
+        <button mat-menu-item (click)="sort('h')" class="font-grey">H</button>
+    </mat-menu>
+    <mat-menu #ItoL="matMenu">
+        <button mat-menu-item (click)="sort('i')" class="font-grey">I</button>
+        <button mat-menu-item (click)="sort('j')" class="font-grey">J</button>
+        <button mat-menu-item (click)="sort('k')" class="font-grey">K</button>
+        <button mat-menu-item (click)="sort('l')" class="font-grey">L</button>
+    </mat-menu>
+    <mat-menu #MtoP="matMenu">
+        <button mat-menu-item (click)="sort('m')" class="font-grey">M</button>
+        <button mat-menu-item (click)="sort('n')" class="font-grey">N</button>
+        <button mat-menu-item (click)="sort('o')" class="font-grey">O</button>
+        <button mat-menu-item (click)="sort('p')" class="font-grey">P</button>
+    </mat-menu>
+    <mat-menu #QtoT="matMenu">
+        <button mat-menu-item (click)="sort('q')" class="font-grey">Q</button>
+        <button mat-menu-item (click)="sort('r')" class="font-grey">R</button>
+        <button mat-menu-item (click)="sort('s')" class="font-grey">S</button>
+        <button mat-menu-item (click)="sort('t')" class="font-grey">T</button>
+    </mat-menu>
+    <mat-menu #UtoX="matMenu">
+        <button mat-menu-item (click)="sort('u')" class="font-grey">U</button>
+        <button mat-menu-item (click)="sort('v')" class="font-grey">V</button>
+        <button mat-menu-item (click)="sort('w')" class="font-grey">W</button>
+        <button mat-menu-item (click)="sort('x')" class="font-grey">X</button>
+    </mat-menu>
+    <mat-menu #YtoZ="matMenu">
+        <button mat-menu-item (click)="sort('y')" class="font-grey">Y</button>
+        <button mat-menu-item (click)="sort('z')" class="font-grey">Z</button>
+    </mat-menu>
+</div>
+<br>
+<div class="row m-0">
+    <app-employee *ngFor="let user of users" [username]="user.username" [forname]="user.forname"
+        [surname]="user.surname" [nickname]="user.nickname" [birthdate]="user.birthdate" [email]="user.email"
+        [secondEmail]="user.secondEmail" [job]="user.job" [phone]="user.phone" [postCode]="user.postCode"
+        [place]="user.place" [houseNumber]="user.houseNumber" [createdAt]="user.createdAt" [notes]="user.notes"
+        class="col-11 col-lg-5 col-xxl-4">
+    </app-employee>
+</div>

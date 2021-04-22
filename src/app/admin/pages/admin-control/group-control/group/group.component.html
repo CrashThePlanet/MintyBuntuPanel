@@ -1,0 +1,44 @@
+<p class="h1 text-center" mat-dialog-title>Gruppe {{action}}</p>
+<div mat-dialog-content>
+    <form [formGroup]="groupForm">
+        <mat-form-field class="w-100 fz-1_3">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput placeholder="Gruppe 1" formControlName="name">
+            <mat-error></mat-error>
+        </mat-form-field>
+        <br>
+        <div class="w-100 fz-1_3">
+            <mat-label>Beschreibung</mat-label>
+            <quill-editor formControlName="editor"></quill-editor>
+            <mat-error></mat-error>
+        </div>
+        <br>
+        <mat-form-field class="w-100 fz-1_3">
+            <mat-label>Bereich</mat-label>
+            <input type="text" matInput placeholder="Web; Game 1" formControlName="workspace">
+            <mat-error></mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-100 fz-1_3">
+            <mat-label>Mitglieder</mat-label>
+            <mat-chip-list #userList>
+                <mat-chip *ngFor="let user of user" selectable="true" removeable="true" (removed)="remove(user)"
+                    class="BRnull font-grey">
+                    {{user}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input #userInput [matAutocomplete]="auto" matInput [matChipInputFor]="userList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" formControlName="userSelect">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let user of unusedUser" [value]="user">
+                    {{user}}
+                </mat-option>
+            </mat-autocomplete>
+            <mat-error></mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>Abbrechen</button>
+    <button mat-raised-button color="accent" (click)="save()">Speichern</button>
+</div>

@@ -1,0 +1,11 @@
+fa-icon, p {
+    width: max-content;
+}
+.maindiv {
+    height: 44.8px;
+    line-height: 44.8px;
+    cursor: pointer;
+}
+.maindiv div {
+    width: max-content;
+}

@@ -1,0 +1,34 @@
+<p class="text-center h1 font-grey">Willkommen auf dem Mintybuntu ManagmentPanel</p>
+<div class="row m-0 text-center font-grey">
+    <div class="col-12 col-xl-6">
+        <p class="m-0">Du hast seit deinem letzten Login <u>{{newTasks}}</u> Aufgaben</p>
+        <p class="m-0">Du bist Teil dieser Gruppen:</p>
+        <ul>
+            <li *ngFor="let group of groups">{{group}}</li>
+        </ul>
+    </div>
+    <div class="col-12 col-xl-6">
+        <div>
+            <p *ngIf="!requestFound">nichts interessantes gefunden</p>
+            <div *ngIf="requestFound">
+                <p *ngIf="requestStatus === 'noReaction'">Deine anfrage wurde noch nicht bearbeitet</p>
+                <div *ngIf="requestStatus === 'declined'">
+                    <p class="m-0">Deine Anfrage wurde abgelehnt</p>
+                    <p class="m-0">Begründung:</p>
+                    <p [innerHTML]="message"></p>
+                    <button mat-raised-button (click)="delete(requestID)">Verstanden</button>
+                </div>
+                <div *ngIf="requestStatus === 'accapted'">
+                    <p>Deine Anfrage wurde angenommen</p>
+                    <button mat-raised-button (click)="delete(requestID)">Verstanden</button>
+                </div>
+                <div *ngIf="requestStatus === 'corrupted'">
+                    <p class="m-0">Deine Anfrage ist Fehlerhaft</p>
+                    <p>Bitte lösche sie und stelle gegebenenfalls eine neue</p>
+                    <button mat-raised-button (click)="delete(requestID)">Löschen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p [innerHTML]="updates" class="updates mx-auto font-grey"></p>

@@ -1,0 +1,206 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+/* For use in src/lib/core/theming/_palette.scss */
+/* For use in src/lib/core/theming/_palette.scss */
+$md-bggrey: (
+  50: #e3e3e4,
+  100: #b8babb,
+  200: #898c8d,
+  300: #595d5f,
+  400: #363b3d,
+  500: #12181b,
+  600: #101518,
+  700: #0d1114,
+  800: #0a0e10,
+  900: #050808,
+  A100: #4fffff,
+  A200: #1cffff,
+  A400: #00e8e8,
+  A700: #00cfcf,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+$md-fontgrey: (
+  50: #f5f5f5,
+  100: #e6e6e6,
+  200: #d5d5d5,
+  300: #c4c4c4,
+  400: #b7b7b7,
+  500: #aaaaaa,
+  600: #a3a3a3,
+  700: #999999,
+  800: #909090,
+  900: #7f7f7f,
+  A100: #ffffff,
+  A200: #fbdddd,
+  A400: #ffa7a7,
+  A700: #ff8d8d,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$md-maingrey: (
+  50: #e5e6e7,
+  100: #bfc0c2,
+  200: #95979a,
+  300: #6a6d72,
+  400: #4a4d53,
+  500: #2a2e35,
+  600: #252930,
+  700: #1f2328,
+  800: #191d22,
+  900: #0f1216,
+  A100: #5b9dff,
+  A200: #287eff,
+  A400: #0062f4,
+  A700: #0057da,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$md-danger: (
+  50: #ffe9e9,
+  100: #ffc7c7,
+  200: #ffa2a2,
+  300: #ff7c7c,
+  400: #ff6060,
+  500: #ff4444,
+  600: #ff3e3e,
+  700: #ff3535,
+  800: #ff2d2d,
+  900: #ff1f1f,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffcece,
+  A700: #ffb5b5,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$md-green: (
+  50: #e6feec,
+  100: #c1fed0,
+  200: #98fdb0,
+  300: #6efc90,
+  400: #4ffb79,
+  500: #30fa61,
+  600: #2bf959,
+  700: #24f94f,
+  800: #1ef845,
+  900: #13f633,
+  A100: #ffffff,
+  A200: #f1fff3,
+  A400: #beffc6,
+  A700: #a5ffaf,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$MintyBuntu-ManagmentPanel-primary: mat-palette($md-fontgrey, 500);
+$MintyBuntu-ManagmentPanel-accent: mat-palette($md-green, 300);
+$MintyBuntu-ManagmentPanel-foreground: mat-palette($md-maingrey, 500);
+$MintyBuntu-ManagmentPanel-background: mat-palette($md-fontgrey, 500);
+
+// The warn palette is optional (defaults to red).
+$MintyBuntu-ManagmentPanel-warn: mat-palette($md-danger, 500);
+
+$MintyBuntu-ManagmentPanel-green: mat-palette($md-green, 500);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$MintyBuntu-ManagmentPanel-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $MintyBuntu-ManagmentPanel-primary,
+      accent: $MintyBuntu-ManagmentPanel-accent,
+      warn: $MintyBuntu-ManagmentPanel-warn,
+      background: $MintyBuntu-ManagmentPanel-background,
+      foreground: $MintyBuntu-ManagmentPanel-foreground,
+    ),
+  )
+);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($MintyBuntu-ManagmentPanel-theme);

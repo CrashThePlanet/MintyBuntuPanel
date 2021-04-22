@@ -1,0 +1,28 @@
+<div class="main-grey mx-auto maindiv col-11 col-lg-4 p-2">
+    <div class="text-center">
+        <p class="h1 font-grey fz-3">Login</p>
+    </div>
+    <form [formGroup]="loginForm">
+        <mat-form-field class="w-100 fz-1_3">
+            <mat-label>Nutzername</mat-label>
+            <input type="text" matInput formControlName="username" autocomplete="off">
+            <mat-error *ngIf="showUE">{{usernameError}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="w-100 fz-1_3">
+            <mat-label>Passwort</mat-label>
+            <input type="password" matInput formControlName="password">
+            <mat-error *ngIf="showPE">{{pwError}}</mat-error>
+        </mat-form-field>
+        <mat-checkbox color="accent" (click)="invertRemember()" matTooltip="Derzeit nicht verfügbar" disabled>
+            Angemeldet bleiben
+        </mat-checkbox>
+        <br> <br>
+        <button mat-raised-button color="accent" class="w-50 m-1 mx-auto BRnull" (click)="login()"><fa-icon [icon]="faUser"></fa-icon> Einloggen</button>
+    </form>
+    <p>Noch kein Account? Registriere dich <a routerLink="/registrate">hier</a>.</p>
+</div>
+<div class="legal row">
+    <a routerLink="/legal/licenses" class="font-grey fz-09">Lizensen</a><br>
+    <a routerLink="/legal/notice" class="font-grey fz-09">Impressum</a>
+</div>

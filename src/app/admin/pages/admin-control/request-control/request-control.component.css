@@ -1,0 +1,21 @@
+.dataShow {
+    padding-left: 15%;
+}
+::ng-deep .mat-expansion-panel {
+    border-radius: 0 !important;
+    color: #ccc !important;
+}
+/*  ======================
+    style the quill editor
+    ======================
+*/
+::ng-deep .ql-stroke,
+::ng-deep .ql-underline .ql-fill {
+    stroke: #ccc !important;
+}
+::ng-deep .ql-fill {
+    fill: #ccc !important;
+}
+::ng-deep .ql-picker-options {
+    background-color: #2A2E35 !important;
+}

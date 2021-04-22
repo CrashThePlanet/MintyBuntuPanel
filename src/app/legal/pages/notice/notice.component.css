@@ -1,0 +1,8 @@
+.login {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.login a {
+    text-decoration: none;
+}

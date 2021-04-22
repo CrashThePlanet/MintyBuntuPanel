@@ -1,0 +1,20 @@
+.login {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.login a {
+    text-decoration: none;
+}
+
+.licenses {
+    display: block;
+    margin-top: 60px;
+}
+
+::ng-deep mat-accordion,
+ ::ng-deep .mat-expansion-panel {
+    border-radius: 0 !important;
+    background-color: #2A2E35;
+}

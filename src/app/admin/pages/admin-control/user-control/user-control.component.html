@@ -1,0 +1,25 @@
+<p class="h5">Nutzer deren Aktivierung aussteht (neue Nutzer)</p>
+<mat-card *ngFor="let nA of notActivated" class="mb-1 d-flex justify-content-between row col-12 mx-auto BRnull">
+    <p>{{nA.username}} <span *ngIf="nA.adminLevel === 3" class="text-danger"><small>Admin</small></span></p>
+    <div>
+        <button mat-raised-button color="accent" (click)="activate(nA.id)" class="BRnull">aktivieren</button>
+    </div>
+</mat-card>
+<br>
+<p class="h5">Aktive nutzer</p>
+<mat-card *ngFor="let a of activated" class="mb-1 d-flex justify-content-between row col-12 mx-auto BRnull">
+    <p>{{a.username}} <span *ngIf="a.adminLevel === 3" class="text-danger"><small>Admin</small></span></p>
+    <div>
+        <button mat-raised-button (click)="toAdmin(a.id)" *ngIf="a.adminLevel !== 3" class="mx-2 BRnull">zum Admin
+            machen</button>
+        <button mat-raised-button color="warn" (click)="deactivate(a.id)" class="BRnull">deaktivieren</button>
+    </div>
+</mat-card>
+<br>
+<p class=" h5">deaktivierte Nutzer</p>
+<mat-card *ngFor="let d of deactivated" class="mb-1 d-flex justify-content-between row col-12 mx-auto BRnull">
+    <p>{{d.username}} <span *ngIf="d.adminLevel === 3" class="text-danger"><small>Admin</small></span></p>
+    <div>
+        <button mat-raised-button color="accent" (click)="activate(d.id)" class="BRnull">aktivieren</button>
+    </div>
+</mat-card>

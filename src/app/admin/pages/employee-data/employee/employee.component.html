@@ -1,0 +1,47 @@
+<mat-expansion-panel class="mb-2 main-grey font-grey BRnull">
+    <mat-expansion-panel-header>
+        <mat-panel-title class="font-grey">
+            {{surname}}, {{forname}}
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-divider></mat-divider>
+    <br>
+    <p>
+        Nutzname: {{username}}
+    </p>
+    <p>
+        Spitzname: {{nickname}}
+    </p>
+    <p>
+        Geburtstag: {{birthdate}}
+    </p>
+    <p>
+        Email: {{email}}
+    </p>
+    <p>
+        private Email: {{secondEmail}}
+    </p>
+    <p>
+        Job: {{job}}
+    </p>
+    <p>
+        Telefonnummer: {{phone}}
+    </p>
+    <p>
+        Postleitzahl: {{postCode}}
+    </p>
+    <p>
+        Ort: {{place}}
+    </p>
+    <p>
+        Hausnummer: {{houseNumber}}
+    </p>
+    <p>
+        erstellt: {{createdAt}}
+    </p>
+    <p>
+        Notizen: <span [innerHTML]="notes"></span>
+    </p>
+</mat-expansion-panel>

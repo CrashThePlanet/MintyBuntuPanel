@@ -1,0 +1,19 @@
+.filter {
+    position: absolute;
+}
+.high {
+    color: #B20F0A;
+}
+.medium {
+    color: #FCC103;
+}
+.low {
+    color: #8CC63F;
+}
+app-task {
+    padding-bottom: 7px;
+}
+::ng-deep .mat-menu-panel {
+    border-radius: 0 !important;
+    background-color: #2A2E35;
+}

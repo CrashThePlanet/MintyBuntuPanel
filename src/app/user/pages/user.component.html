@@ -1,0 +1,47 @@
+<mat-drawer-container (backdropClick)="closeSideNav()" hasBackdrop="true">
+    <mat-drawer #sideNav [mode]="isSmall() ? 'side' : 'over'" position="end" [opened]="opened" disableClose
+        [ngClass]="{'smallSceenNav': navMode === 'over'}">
+        <fa-icon [icon]="faTimes" size="2x" *ngIf="navMode === 'over'" (click)="closeSideNav()" class="closeIcon">
+        </fa-icon>
+        <a class="navLink text-center" (click)="closeSideNav()" routerLinkActive="selectedLink" routerLink="home"
+            matTooltip="Home" matTooltipPosition="left">
+            <mat-icon class="fz-2_3">home</mat-icon>
+        </a>
+        <a class="navLink fz-1_1" (click)="closeSideNav()" routerLinkActive="selectedLink" routerLink="tasks"
+            matTooltip="Aufgaben" matTooltipPosition="left">
+            <mat-icon class="fz-2_3">task_alt</mat-icon>
+        </a>
+        <a class="navLink fz-1_1" (click)="closeSideNav()" routerLinkActive="selectedLink" routerLink="userData"
+            matTooltip="Accountdaten" matTooltipPosition="left">
+            <mat-icon class="fz-2_3">person</mat-icon>
+        </a>
+        <a *ngIf="admin" class="navLink fz-1_1" (click)="closeSideNav()" routerLinkActive="selectedLink"
+            routerLink="/admin/creatTask" matTooltip="Aufgabe erstellen" matTooltipPosition="left">
+            <mat-icon class="fz-2_3">add_task</mat-icon>
+        </a>
+        <a *ngIf="admin" class="navLink fz-1_1" (click)="closeSideNav()" routerLinkActive="selectedLink"
+            routerLink="/admin/taskControl" matTooltip="Aufgaben verwalten" matTooltipPosition="left">
+            <mat-icon class="fz-2_3">edit_note</mat-icon>
+        </a>
+        <a *ngIf="admin" class="navLink fz-1_1" (click)="closeSideNav()" routerLinkActive="selectedLink"
+            routerLink="/admin/employeeData" matTooltip="Mitarbeiter" matTooltipPosition="left">
+            <mat-icon class="fz-2_3">groups</mat-icon>
+        </a>
+        <a *ngIf="admin" class="navLink fz-1_1" (click)="closeSideNav()" routerLinkActive="selectedLink"
+            routerLink="/admin/adminControl/requests" matTooltip="Admin" matTooltipPosition="left">
+            <mat-icon class="fz-2_3">admin_panel_settings</mat-icon>
+        </a>
+        <a routerLink="/legal/licenses" class="font-grey fz-09 legalLinks higher">Lizensen</a><br>
+        <a routerLink="/legal/notice" class="font-grey fz-09 legalLinks">Impressum</a>
+        <a class="navLink fz-1_1 logout" (click)="closeSideNav()" routerLinkActive="selectedLink" routerLink="/logout"
+            matTooltip="Ausloggen" matTooltipPosition="left">
+            <mat-icon class="fz-2_3">power_settings_new</mat-icon>
+        </a>
+    </mat-drawer>
+    <mat-drawer-content class="p-2" [ngClass]="{'bigContent': navMode === 'over'}">
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+<div *ngIf="navMode === 'over' && !opened" class="smallSideNav">
+    <fa-icon [icon]="faBars" size="2x" (click)="invertOpenState()"></fa-icon>
+</div>

@@ -1,0 +1,14 @@
+/*  ======================
+    style the quill editor
+    ======================
+*/
+::ng-deep .ql-stroke,
+::ng-deep .ql-underline .ql-fill {
+    stroke: #ccc !important;
+}
+::ng-deep .ql-fill {
+    fill: #ccc !important;
+}
+::ng-deep .ql-picker-options {
+    background-color: #2A2E35 !important;
+}

@@ -1,0 +1,14 @@
+<button mat-fab color="accent" class="addGroup" (click)="openCreate()">
+    <fa-icon [icon]="faPlus"></fa-icon>
+</button>
+<mat-card *ngFor="let group of groups" class="BRnull mb-2">
+    <mat-card-title class="font-grey">{{group.name}}</mat-card-title>
+    <mat-card-subtitle>{{group.workspace}}</mat-card-subtitle>
+    <mat-card-content>
+        <p [innerHTML]="group.description" class="font-grey"></p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="edit(group.id)" class="BRnull">Bearbeiten</button>
+        <button mat-raised-button color="warn" (click)="delete(group)" class="BRnull">Löschen</button>
+    </mat-card-actions>
+</mat-card>

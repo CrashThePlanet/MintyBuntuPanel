@@ -1,0 +1,28 @@
+<mat-accordion>
+    <mat-expansion-panel class="main-grey font-grey BRnull">
+        <mat-expansion-panel-header>
+            <mat-panel-title class="font-grey">
+                {{shortDesc}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-divider *ngIf="priority === 'high'" class="high"></mat-divider>
+        <mat-divider *ngIf="priority === 'medium'" class="medium"></mat-divider>
+        <mat-divider *ngIf="priority === 'low'" class="low"></mat-divider>
+        <div class="fz-08 my-1 p-1" [innerHTML]="description"></div>
+        <mat-divider></mat-divider>
+        <p>Wichtigkeit: {{priority}}</p>
+        <p>Status: {{status}}</p>
+        <p>Erstelldatum: {{creationDate}}</p>
+        <p>AbgabeDatum: {{deliveryDate}}</p>
+        <p>Auftraggeber: {{client}}</p>
+        <p>bearbeitende(r) Nutzer / Gruppe: {{editorName}}</p>
+        <button mat-raised-button color="warn" (click)="openDelete()" class="BRnull">
+            <fa-icon [icon]="faTrashAlt" size="lg"></fa-icon>
+            Löschen
+        </button>
+        <button mat-raised-button color="accent" (click)="openEdit()" class="mx-sm-2 my-2 my-sm-0 BRnull">
+            <fa-icon [icon]="faEdit" size="lg"></fa-icon>
+            Bearbeiten
+        </button>
+    </mat-expansion-panel>
+</mat-accordion>

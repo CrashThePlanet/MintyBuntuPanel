@@ -1,0 +1,16 @@
+mat-divider {
+    height: 2px;
+}
+.high {
+    background-color: #B20F0A;
+}
+.medium {
+    background-color: #FCC103;
+}
+.low {
+    background-color: #8CC63F;
+}
+.mat-accordion .mat-expansion-panel:last-of-type, 
+.mat-expansion-panel:first-of-type {
+    border-radius: 0;
+}

@@ -1,0 +1,23 @@
+<div class="filter">
+    <button mat-button [matMenuTriggerFor]="letters" class="font-grey">Filter <fa-icon [icon]="faEllipsisV" size="lg">
+        </fa-icon>
+    </button>
+    <mat-menu #letters="matMenu" class="font-grey">
+        <button mat-menu-item (click)="getTasks()">Reset</button>
+        <button mat-menu-item disabled>-- Nutzer --</button>
+        <button mat-menu-item *ngFor="let editor of editors" (click)="filter(editor)">{{editor.username}}</button>
+        <button mat-menu-item disabled>-- Gruppen --</button>
+        <button mat-menu-item *ngFor="let group of groups" (click)="filter(group)">{{group.name}}</button>
+    </mat-menu>
+</div>
+<div class="mx-auto col-9 col-lg-6 col-xxl-4 d-flex justify-content-between mb-3">
+    <span class="low">nicht so wichtig</span>
+    <span class="medium">mittelmäßig wichtig</span>
+    <span class="high">sehr wichtig</span>
+</div>
+<div class="row m-0">
+    <app-task *ngFor="let task of tasks" [shortDesc]="task.shortDesc" [description]="task.description"
+        [priority]="task.priority" [status]="task.status" [creationDate]="task.creationDate"
+        [deliveryDate]="task.deliveryDate" [client]="task.client" [id]="task.id" [editor]="task.editor"
+        [editorName]="task.editorName" (refresh)="getTasks()" class="col-11 col-lg-5 col-xxl-4"></app-task>
+</div>

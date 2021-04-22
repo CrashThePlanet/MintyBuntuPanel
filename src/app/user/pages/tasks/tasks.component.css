@@ -1,0 +1,12 @@
+app-task {
+    padding-bottom: 7px;
+}
+.high {
+    color: #B20F0A;
+}
+.medium {
+    color: #FCC103;
+}
+.low {
+    color: #8CC63F;
+}

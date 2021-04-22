@@ -1,0 +1,27 @@
+<mat-accordion>
+    <mat-expansion-panel class="main-grey font-grey">
+        <mat-expansion-panel-header>
+            <mat-panel-title class="font-grey">
+                {{shortDesc}}
+                <span *ngIf="groupName !== undefined">
+                    &nbsp;({{groupName}})
+                </span>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-divider *ngIf="priority === 'high'" class="high"></mat-divider>
+        <mat-divider *ngIf="priority === 'medium'" class="medium"></mat-divider>
+        <mat-divider *ngIf="priority === 'low'" class="low"></mat-divider>
+        <div class="fz-08 my-1 p-1" [innerHTML]="description"></div>
+        <mat-divider></mat-divider>
+        <p>Wichtigkeit: {{priority}}</p>
+        <p>Status: {{status}}</p>
+        <p>Erstelldatum: {{creationDate}}</p>
+        <p>AbgabeDatum: {{deliveryDate}}</p>
+        <p>Auftraggeber: {{client}}</p>
+        <br>
+        <button mat-raised-button color="accent" (click)="openDeliver()" class="BRnull">
+            <fa-icon [icon]="faCheck" size="lg"></fa-icon>
+            Aufgabe abgeben
+        </button>
+    </mat-expansion-panel>
+</mat-accordion>

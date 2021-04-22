@@ -1,0 +1,58 @@
+<p class="h1 text-center" mat-dialog-title>Aufgabe bearbeiten</p>
+<div mat-dialog-content>
+    <form [formGroup]="updateForm" class="">
+        <mat-form-field class="w-100 fz-1_3">
+            <mat-label>Kurzbeschreibung</mat-label>
+            <input type="text" matInput formControlName="shortDesc">
+            <mat-error></mat-error>
+        </mat-form-field>
+        <div class="w-100 fz-1_3">
+            <mat-label>Beschreibung</mat-label>
+            <quill-editor formControlName="editor"></quill-editor>
+            <mat-error></mat-error>
+        </div>
+        <mat-form-field class="w-100 fz-1_3">
+            <mat-label>Abgabetermin</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="deliveryDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint>Wenn du kein Datum auswählt, hat der Nutzer unbegrenzt Zeit</mat-hint>
+            <br>
+        </mat-form-field>
+        <br><br>
+        <mat-form-field class="w-100 fz-1_3">
+            <mat-label>Priorität</mat-label>
+            <mat-select matInput formControlName="priority">
+                <mat-option value="low" class="font-grey">unwichtig</mat-option>
+                <mat-option value="medium" class="font-grey">mittelmäßig</mat-option>
+                <mat-option value="high" class="font-grey">sehr wichtig</mat-option>
+            </mat-select>
+            <mat-error></mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-100 fz-1_3">
+            <mat-label>Status</mat-label>
+            <mat-select matInput formControlName="status">
+                <mat-option value="pending" class="font-grey">austehend (Standart)</mat-option>
+                <mat-option value="deactiated" class="font-grey">deaktiviert</mat-option>
+            </mat-select>
+            <mat-error></mat-error>
+        </mat-form-field>
+        <br>
+        <div>
+            <p class="h6 m-0">bearbeitende(r) Nutzer / Gruppe</p>
+            <p>{{task.editorName}}</p>
+        </div>
+        <div>
+            <p class="h6 m-0">Auftraggeber</p>
+            <p>{{task.client}}</p>
+        </div>
+        <div>
+            <p class="h6 m-0">Erstell am</p>
+            <p>{{task.creationDate}}</p>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button class="BRnull" [mat-dialog-close]="false">Abbrechen</button>
+    <button mat-raised-button class="BRnull" (click)="update()">Speichern</button>
+</div>
