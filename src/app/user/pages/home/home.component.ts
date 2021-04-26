@@ -235,8 +235,6 @@ export class HomeComponent implements OnInit {
     this.getGroups();
     this.getRequestsReaction();
     this.getUpdates();
-    // console.log(sessionStorage.getItem('accessToken'));
-    // this.tokenService.validateToken();
   }
 
 }

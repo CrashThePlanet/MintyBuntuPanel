@@ -90,9 +90,9 @@ export class UserComponent implements OnInit {
     ) {
       // delete session if there is only one / two of the three
       sessionStorage.clear();
-      this.cookieService.deleteAll();
       // redirect ot login
       this.router.navigate(['/login']);
+      return;
     }
     // check if the access token is valid
     // this.tokenService.validateToken();

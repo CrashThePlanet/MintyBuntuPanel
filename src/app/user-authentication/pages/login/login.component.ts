@@ -97,25 +97,22 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('refreshToken', data.refreshToken);
       sessionStorage.setItem('adminLevel', data.adminLevel);
       // check if the user wants to be remembered
-      if (this.rememberMe) {/*
+      if (this.rememberMe) {
         // if, set the two tokens as cookie
         this.cookieService.set('accessToken', data.accessToken, 56);
         this.cookieService.set('refreshToken', data.refreshToken, 56);
-        this.cookieService.set('adminLevel', data.adminLevel, 56);*/
+        this.cookieService.set('adminLevel', data.adminLevel, 56);
       }
       // send the user to the "home" page
       this.router.navigate(['/user/home']);
     });
   }
   // checking for existing session
-  // or if the user wanted to be remembered (cookie)
+  // or if the user wanted to be remembered (cookies)
   ngOnInit(): void {
-    /*
     // check if there are both tokens as session
     if (sessionStorage.getItem('accessToken') !== null &&
       sessionStorage.getItem('refreshToken') !== null) {
-      console.log('57zgw8o745ghw45bw45zb w gw gw');
-
       // validate those tokens
       if (this.tokenService.validateToken()) {
         // if there are valid, send to "home" page
@@ -125,27 +122,24 @@ export class LoginComponent implements OnInit {
       return;
     }
     // check if there are both tokens as cookie
-    console.log(this.cookieService.get('accessToken'));
-    console.log(this.cookieService.get('refreshToken'));
     if (this.cookieService.get('accessToken') !== '' &&
       this.cookieService.get('refreshToken') !== '') {
-        console.log('1');
-        
+        // call api to validate token
         this.httpService.Post('tokenControl/validateToken', {
           accessToken: this.cookieService.get('accessToken')
         }).subscribe(async responseData => {
-          console.log(responseData);
+          // check if the token is valid (or just expired)
           if (responseData.status === 'tokenExpired' || responseData.status === 'tokenValid') {
+            // set the tokens and the adminLevel as session
             sessionStorage.setItem('accessToken', this.cookieService.get('accessToken'));
             sessionStorage.setItem('refreshToken', this.cookieService.get('refreshToken'));
             sessionStorage.setItem('adminLevel', this.cookieService.get('adminLevel'));
-            console.log(sessionStorage.getItem('refreshToken'));
-            console.log('dfnb');
-            
+            // refresh the access token
             await this.tokenService.refreshToken();
+            // send user to home page
             this.router.navigate(['/user/home']);
           }
         });
-    }*/
+    }
   }
 }

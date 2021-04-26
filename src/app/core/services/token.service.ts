@@ -18,7 +18,6 @@ export class TokenService {
   // function to delete all tokens
   handleInvalidToken(): void {
     console.log('got called');
-
     // delte in session
     sessionStorage.clear();
     // selete in cookie
@@ -28,21 +27,15 @@ export class TokenService {
   }
   // function to refresh access token
   // option parameter for other values (tokens from cookie as example)
-  async refreshToken(gotData?: any): Promise<any> {
+  // "gotData?: any"
+  async refreshToken(): Promise<any> {
     let _returnFeedback;
-    let requestData: { refreshToken: any; expiredToken: any; };
-    // if there are parameters send with it
-    // assign them to the var
     // get expired access token and refresh token from session
-    console.log(sessionStorage.getItem('refreshToken') + 'ydbgfih');
-    
     // call backend
     await this.httpService.Post('tokenControl/refreshToken', {
       expiredToken: sessionStorage.getItem('accessToken'),
       refreshToken: sessionStorage.getItem('refreshToken'),
-    }).toPromise().then(responseData => {
-      console.log(responseData);
-
+    }).subscribe((responseData: any) => {
       // if one of the tokens (refreshToken or the expired access token)
       // is invalid
       if (responseData.status === 'invalidRefreshToken' ||
@@ -57,7 +50,7 @@ export class TokenService {
         // created
         // set both tokens and adminlevel as sessions
         sessionStorage.setItem('accessToken', responseData.newAccessToken);
-        sessionStorage.setItem('refreshToken', requestData.refreshToken);
+        sessionStorage.setItem('refreshToken', responseData.refreshToken);
         sessionStorage.setItem('adminLevel', responseData.adminLevel);
         // check if there is also a token in a cookie
         if (this.cookieService.get('accessToken') !== '') {
@@ -84,14 +77,11 @@ export class TokenService {
     let _returnFeedback;
     // console.log(sessionStorage.getItem('accessToken'));
     // console.log('k');
-    
     // call server
     // tslint:disable-next-line: semicolon
     await this.httpService.Post('tokenControl/validateToken', {
       accessToken: sessionStorage.getItem('accessToken')
     }).toPromise().then((responseData: any) => {
-      // console.log(responseData);
-
       // if token ist valid return true
       if (responseData.status === 'tokenValid') {
         _returnFeedback = true;

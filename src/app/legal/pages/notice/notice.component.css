@@ -1,8 +1,10 @@
-.login {
+.back {
     position: absolute;
     top: 10px;
     left: 10px;
+    cursor: pointer;
 }
-.login a {
+
+.back a {
     text-decoration: none;
 }

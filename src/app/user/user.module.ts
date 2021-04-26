@@ -47,7 +47,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { QuillModule } from 'ngx-quill';
-import { InterceptorService } from '../core';
 
 
 
@@ -105,7 +104,7 @@ import { InterceptorService } from '../core';
     MatDatepickerModule,
     QuillModule.forRoot({
       modules: {
-        syntax: false,
+        syntax: true,
         toolbar: [
           ['bold', 'italic', 'underline'],
           ['code-block'],
@@ -118,7 +117,7 @@ import { InterceptorService } from '../core';
   ],
   providers: [
     HttpService,
-    MatNativeDateModule
+    MatNativeDateModule,
   ]
 })
 export class UserModule { }

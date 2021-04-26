@@ -14,7 +14,7 @@
             <input type="password" matInput formControlName="password">
             <mat-error *ngIf="showPE">{{pwError}}</mat-error>
         </mat-form-field>
-        <mat-checkbox color="accent" (click)="invertRemember()" matTooltip="Derzeit nicht verfügbar" disabled>
+        <mat-checkbox color="accent" (click)="invertRemember()">
             Angemeldet bleiben
         </mat-checkbox>
         <br> <br>

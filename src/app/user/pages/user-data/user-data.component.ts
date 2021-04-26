@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService, SnackBarService, TokenService } from 'src/app/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 // used the work whith normal Jquery (and bottstrap)
@@ -9,7 +10,6 @@ declare let $: any;
 // go to the Angular Material page to see the code
 // format: DD.MM.YYYY => exapmle: 03.06.2021
 import * as _moment from 'moment';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 const moment = _moment;
 export const MY_FORMATS: any = {
   parse: {

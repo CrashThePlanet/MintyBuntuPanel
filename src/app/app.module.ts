@@ -100,7 +100,7 @@ import { InterceptorService } from './core';
     MatPaginatorModule,
     QuillModule.forRoot({
       modules: {
-        syntax: false,
+        syntax: true,
         toolbar: [
           ['bold', 'italic', 'underline'],
           ['code-block'],

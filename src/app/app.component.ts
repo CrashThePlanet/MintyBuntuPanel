@@ -27,7 +27,7 @@ export class AppComponent {
         // wait for end of route change
         if (event instanceof NavigationEnd) {
           // validate token
-          this.tokenService.validateToken();
+          // this.tokenService.validateToken();
         }
       }
     });
